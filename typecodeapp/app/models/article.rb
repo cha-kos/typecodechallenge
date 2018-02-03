@@ -8,6 +8,10 @@ class Article < ActiveRecord::Base
     slug
   end
 
+  def convert_to_slug(name)
+    name.downcase.gsub(" ", "-")
+  end
+
   def validate_slug(slug)
     if Article.find_by_slug(slug)
       return true
