@@ -1,0 +1,23 @@
+{
+  "name": "typecodeapp",
+  "version": "0.1.0",
+  "private": true,
+  "engines": {
+    "node": "6.9.3",
+    "npm": "3.10.10"
+  },
+  "scripts": {
+    "webpack": "webpack --watch",
+    "postinstall": "webpack"
+  },
+  "dependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
+    "react-scripts": "1.0.14",
+    "webpack": "^3.8.1"
+  }
+}
