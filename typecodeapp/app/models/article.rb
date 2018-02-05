@@ -2,6 +2,8 @@ class Article < ActiveRecord::Base
   validates :title, :slug, presence: true
   validates :slug, uniqueness: true
 
+  before_validation :generate_slug
+
   def to_param
     self.slug
   end
