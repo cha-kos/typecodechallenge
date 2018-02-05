@@ -1,27 +1,25 @@
-class ArticlesController < ApplicationController
+class Api::ArticlesController < ApplicationController
 
   def show
     @article = Article.find_by_slug(params[:slug])
   end
 
   def create
-    article = Article.new
-    article.title = params[:title]
-    slug = article.convert_title_to_slug(article.title)
+    debugger
+    article = Article.new(title: params[:title])
+    article.generate_slug
 
-    if !article.validate_slug(slug)
-      until article.validate_slug(slug)
-        slug = article.append_to_slug(slug)
-      end
-    end
 
-    article.slug = slug
-
-    if article.save
+    if article.save!
       render :show
     else
       render json: @photo.errors.full_messages, status: 422
     end
   end
+
+  def comment_params
+    params.require(:title)
+  end
+
 
 end
