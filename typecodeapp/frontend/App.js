@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import DistanceCalculator from './components/distance-calculator';
 import Input from './components/input';
 
 class App extends Component {
