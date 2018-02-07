@@ -1,7 +1,19 @@
 import React, { Component } from 'react';
-import Input from './components/input';
+import Input from './input';
+import {getArticle, updateArticle} from '../util/articleApiUtil';
 
-class App extends Component {
+class Article extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      title: "",
+      slug: ""
+    };
+  }
+
+  componentDidMount(){
+
+  }
   render() {
     return (
       <div className="app">
