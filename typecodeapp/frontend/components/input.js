@@ -10,10 +10,14 @@ export default class Input extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      value: "",
-      className: "input",
+      value: this.props.value,
+      className: this.props.className,
       editing: false
     };
+  }
+
+  componentWillReceiveProps(nextProps){
+    this.setState({value: nextProps.value});
   }
 
   onChange(e){
@@ -46,7 +50,7 @@ export default class Input extends React.Component {
             onKeyPress={(e) => this.handleKeyPress(e)}
             ref={(input) => { this.nameInput = input; }}
           />
-          <button onClick={() => this.setState({editing: false}, this.update())}>
+          <button onClick={() => this.setState({editing: false}, this.props.update(this.state.value))}>
             <SaveIcon/>
           </button>
         </div>

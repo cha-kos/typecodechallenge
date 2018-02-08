@@ -1,18 +1,20 @@
 import React, { Component } from 'react';
+import { HashRouter, Route, Switch, withRouter} from 'react-router-dom';
+import Article from './components/article';
 import Input from './components/input';
+import Root from './root';
 
 class App extends Component {
   render() {
     return (
-      <div className="app">
-        <header className="app-header">
-          <h1 className="app-title">US Airport Distance Calculator</h1>
-          <div className="app-designer"> Built & Designed by <a href="https://www.chrishakos.com">Chris Hakos</a></div>
-          <Input/>
-        </header>
+      <div>
+      <Switch>
+          <Route exact path='/' component={ Input } />
+          <Route exact path='/article/:slug' component={ Article } />
+      </Switch>
       </div>
     );
   }
 }
 
-export default App;
+export default withRouter(App);

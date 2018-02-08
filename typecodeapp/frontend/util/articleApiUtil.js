@@ -1,14 +1,14 @@
-export const updateArticle = ({article}) => {
+export const updateArticle = ( article ) => {
   return $.ajax({
     method: "PATCH",
-    url: `api/articles/${slug}`,
-	data: { title: title}
+    url: `api/articles/${article.slug}`,
+	   data: { title: article.title }
   });
 };
 
 export const getArticle = (slug) => {
   return $.ajax({
-    method: "PATCH",
+    method: "GET",
     url: `api/articles/${slug}`
   });
 };

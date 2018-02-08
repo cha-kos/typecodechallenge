@@ -1,15 +1,29 @@
 class Api::ArticlesController < ApplicationController
 
   def show
-    debugger
     @article = Article.find_by slug: params[:slug]
+    render :show
   end
 
   def create
-    debugger
     @article = Article.new(title: params[:title])
-    # @article.generate_slug
 
+    if @article.save!
+      render :show
+    else
+      render json: @article.errors.full_messages, status: 422
+    end
+  end
+
+  def update
+    debugger
+    @article = Article.find_by slug: params[:slug]
+    if @article.title == params[:title]
+      render :show
+      return
+    else
+      @article.title = params[:title]
+    end
 
     if @article.save!
       render :show
