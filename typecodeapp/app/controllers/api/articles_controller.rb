@@ -2,7 +2,11 @@ class Api::ArticlesController < ApplicationController
 
   def show
     @article = Article.find_by slug: params[:slug]
-    render :show
+    if @article
+      render :show
+    else
+      render json: "Requested Article Does Not Exist", status: 422
+    end
   end
 
   def create
@@ -16,7 +20,6 @@ class Api::ArticlesController < ApplicationController
   end
 
   def update
-    debugger
     @article = Article.find_by slug: params[:slug]
     if @article.title == params[:title]
       render :show

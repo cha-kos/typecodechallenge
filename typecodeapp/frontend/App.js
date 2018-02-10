@@ -7,14 +7,13 @@ import Root from './root';
 class App extends Component {
   render() {
     return (
-      <div>
       <Switch>
           <Route exact path='/' component={ Input } />
-          <Route exact path='/article/:slug' component={ Article } />
+          <Route path='/article/:slug' component={ Article } />
       </Switch>
-      </div>
     );
   }
 }
+
 
 export default withRouter(App);

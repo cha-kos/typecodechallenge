@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Input from './input';
-import {getArticle, updateArticle} from '../util/articleApiUtil';
-var article;
+import {getArticle, updateArticle, verifySlug} from '../util/articleApiUtil';
+
 
 class Article extends Component {
   constructor(props){
@@ -10,18 +10,43 @@ class Article extends Component {
       title: "",
       slug: ""
     };
+    this.retrieveArticle = this.retrieveArticle.bind(this);
   }
 
   componentDidMount(){
-    article = this;
-    getArticle(this.props.match.params.slug)
+    this.retrieveArticle(this.props.match.params.slug);
+  }
+
+  componentWillReceiveProps(nextProps){
+    if (this.props.match.params.slug !== nextProps.match.params.slug){
+      this.retrieveArticle(nextProps.match.params.slug);
+    }
+  }
+
+  shouldComponentUpdate(nextProps){
+    if (this.props.match.params.slug !== nextProps.match.params.slug){
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  retrieveArticle(slug){
+    getArticle(slug)
     .then( response => {
-      article.setState( response );
+      this.setState( response );
     });
   }
 
+  // setSlug(title){
+  //   var slug = title.toLowerCase().replace(" ", "-");
+  //   verifySlug(slug).then(response => {
+  //     debugger
+  //     this.setState(response)});
+  // }
+
   update(title){
-    article = this;
+    var article = this;
     updateArticle({ title: title, slug: this.state.slug })
     .then (response => {
       article.setState(response , () => {
@@ -36,7 +61,7 @@ class Article extends Component {
         <header className="app-header">
           <h1 className="app-title">{this.state.title}</h1>
           <div className="app-designer"> Built & Designed by <a href="https://www.chrishakos.com">Chris Hakos</a></div>
-          <Input value={this.state.title} className="title" update={this.update.bind(this)}/>
+          <Input value={this.state.title} className="title" slug={this.props.slug} update={this.update.bind(this)}/>
         </header>
       </div>
     );

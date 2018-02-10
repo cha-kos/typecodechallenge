@@ -6,7 +6,7 @@ import Input from './components/input';
 
 const Root = () => (
     <HashRouter>
-      <App/>
+        <App/>
     </HashRouter>
 );
 

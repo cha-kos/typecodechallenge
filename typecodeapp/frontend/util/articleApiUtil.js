@@ -12,3 +12,10 @@ export const getArticle = (slug) => {
     url: `api/articles/${slug}`
   });
 };
+
+export const verifySlug = (slug) => {
+  return $.ajax({
+    method: "GET",
+    url: `api/articles/${slug}/verify`
+  });
+};
