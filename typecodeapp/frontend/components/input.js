@@ -10,13 +10,20 @@ export default class Input extends React.Component {
     this.state = {
       value: this.props.value,
       slug: this.props.slug,
+      parentSlug: this.props.slug,
       className: this.props.className,
       editing: false
     };
   }
 
   componentWillReceiveProps(nextProps){
-    this.setState({value: nextProps.value});
+    this.setState(
+      {
+        value: nextProps.value,
+        slug: nextProps.slug,
+        parentSlug: nextProps.slug
+      }
+    );
   }
 
   onChange(e){
@@ -27,16 +34,28 @@ export default class Input extends React.Component {
 
   setSlug(title){
     if (title.length >= 1) {
-      var slug = title.toLowerCase().replace(" ", "-");
-      verifySlug(slug).then(response => this.setState({value: title , slug:response.slug}));
+      var slug = this.slugify(title);
+      if (slug !== this.state.parentSlug) {
+        verifySlug(slug).then(response => this.setState({value: title , slug: response.slug}));
+      } else {
+        this.setState({value: title, slug: slug});
+      }
     } else {
-      this.setState({value: title, slug: ""})
+      this.setState({value: title, slug: ""});
     }
+  }
+
+  slugify(title){
+    return(
+      title.toLowerCase()
+            .replace(/[;/?:@&=+$,.!""'']/g, "")
+            .replace(/\s/g, "-")
+    );
   }
 
   handleKeyPress(e){
     if (e && e.key === "Enter"){
-      this.setState({editing: false}, this.props.update(this.state.value));
+      this.setState({editing: false}, this.props.update(this.state.value, this.state.slug));
     }
   }
 
@@ -59,7 +78,7 @@ export default class Input extends React.Component {
             ref={(input) => { this.nameInput = input; }}
           />
           <div> slug: {this.state.slug} </div>
-          <button onClick={() => this.setState({editing: false}, this.props.update(this.state.value))}>
+          <button onClick={() => this.setState({editing: false}, this.props.update(this.state.value, this.state.slug))}>
             <SaveIcon/>
           </button>
         </div>

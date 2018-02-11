@@ -38,16 +38,9 @@ class Article extends Component {
     });
   }
 
-  // setSlug(title){
-  //   var slug = title.toLowerCase().replace(" ", "-");
-  //   verifySlug(slug).then(response => {
-  //     debugger
-  //     this.setState(response)});
-  // }
-
-  update(title){
+  update(title, slug){
     var article = this;
-    updateArticle({ title: title, slug: this.state.slug })
+    updateArticle({ title: title, newSlug: slug, oldSlug: this.state.slug})
     .then (response => {
       article.setState(response , () => {
         article.props.history.push(`/article/${article.state.slug}`);
@@ -61,7 +54,7 @@ class Article extends Component {
         <header className="app-header">
           <h1 className="app-title">{this.state.title}</h1>
           <div className="app-designer"> Built & Designed by <a href="https://www.chrishakos.com">Chris Hakos</a></div>
-          <Input value={this.state.title} className="title" slug={this.props.slug} update={this.update.bind(this)}/>
+          <Input value={this.state.title} className="title" slug={this.state.slug} update={this.update.bind(this)}/>
         </header>
       </div>
     );

@@ -9,16 +9,6 @@ class Api::ArticlesController < ApplicationController
     end
   end
 
-  def create
-    @article = Article.new(title: params[:title])
-
-    if @article.save!
-      render :show
-    else
-      render json: @article.errors.full_messages, status: 422
-    end
-  end
-
   def update
     @article = Article.find_by slug: params[:slug]
     if @article.title == params[:title]
@@ -26,6 +16,7 @@ class Api::ArticlesController < ApplicationController
       return
     else
       @article.title = params[:title]
+      @article.slug = params[:new_slug]
     end
 
     if @article.save!
@@ -34,6 +25,4 @@ class Api::ArticlesController < ApplicationController
       render json: @article.errors.full_messages, status: 422
     end
   end
-
-
 end

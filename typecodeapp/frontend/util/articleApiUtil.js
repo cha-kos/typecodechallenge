@@ -1,8 +1,8 @@
 export const updateArticle = ( article ) => {
   return $.ajax({
     method: "PATCH",
-    url: `api/articles/${article.slug}`,
-	   data: { title: article.title }
+    url: `api/articles/${article.oldSlug}`,
+	   data: { title: article.title, new_slug: article.newSlug }
   });
 };
 
