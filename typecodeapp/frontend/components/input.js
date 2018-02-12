@@ -1,5 +1,5 @@
 import React from 'react';
-import SaveIcon from '../icons/saveIcon';
+import Checkmark from '../icons/checkmark';
 import EditIcon from '../icons/editIcon';
 import Xicon from '../icons/Xicon';
 import {getArticle, updateArticle, verifySlug} from '../util/articleApiUtil';
@@ -77,6 +77,12 @@ export default class Input extends React.Component {
     if (this.state.editing === true){
       return (
         <div className={`${this.state.className}-body input-body`}>
+          <div className='checkmark' onClick={() => this.setState({editing: false}, this.props.update(this.state.value, this.state.slug))}>
+            <SaveIcon/>
+          </div>
+          <div className='x-icon' onClick={() => this.discard()}>
+            <Xicon/>
+          </div>
           <input
             className={this.state.className}
             placeholder=''
@@ -87,29 +93,25 @@ export default class Input extends React.Component {
             ref={(input) => { this.nameInput = input; }}
           />
           <div> slug: {this.state.slug} </div>
-          <button onClick={() => this.setState({editing: false}, this.props.update(this.state.value, this.state.slug))}>
-            <SaveIcon/>
-          </button>
-          <button onClick={() => this.discard()}>
-            <Xicon/>
-          </button>
         </div>
       );
     } else {
       return (
         <div className={`${this.state.className}-body input-body`}>
-          <div
-            className={`${this.state.className} input-display`}
-            placeholder=''
-            type="text"
-            value={this.state.value}
-            onChange={this.onChange()}
-            onClick={() => this.setState({editing: true}, () => this.autoFocus())}
-          >{this.state.value}
-          </div>
-          <button onClick={() => this.setState({editing: true}, () => this.autoFocus())}>
+          <div className="edit-button" onClick={() => this.setState({editing: true}, () => this.autoFocus())}>
             <EditIcon/>
-          </button>
+          </div>
+          <span className="title-wrap">
+            <div
+              className={`${this.state.className} input-display`}
+              value={this.state.value}
+              onChange={this.onChange()}
+              onClick={() => this.setState({editing: true}, () => this.autoFocus())}
+              >
+                {this.state.value}
+            </div>
+            <div className={`${this.state.className}-mask`}>{this.state.value}</div>
+          </span>
         </div>
       );
     }

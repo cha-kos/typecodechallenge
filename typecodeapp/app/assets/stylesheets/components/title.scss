@@ -1,0 +1,44 @@
+.title-body{
+  background-color: transparent;
+  grid-column-start: row2;
+  grid-column-end:row7;
+  margin-top: 630px;
+  margin-left: -10px;
+  display: flex;
+}
+
+.edit-button{
+  height: 25px;
+  background-color: #F3E13B;
+}
+
+.title-wrap{
+  display: inline-block;
+  background-color: transparent;
+  margin-top: 25px;
+}
+
+.input-display{
+  font-size: 50px;
+  font-weight: bold;
+  background: image-url("header_img.jpg");
+  background-position: bottom;
+  background-size: 1500px;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  position: relative;
+  top: 0;
+  z-index: 50;
+  margin-left: 10px;
+}
+
+.title-mask{
+  display: inline;
+  font-size: 50px;
+  font-weight: bold;
+  background: white;
+  color: rgba(0,0,0,0);
+  position: relative;
+  padding: 0px 20px;
+  top: -95px;
+}

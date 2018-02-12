@@ -51,9 +51,7 @@ class Article extends Component {
   render() {
     return (
       <div className="article-container">
-        <div className="article-header">
           <img className="header-image" src={window.images.headerImg}/>
-        </div>
         <Input value={this.state.title} className="title" slug={this.state.slug} update={this.update.bind(this)}/>
       </div>
     );
