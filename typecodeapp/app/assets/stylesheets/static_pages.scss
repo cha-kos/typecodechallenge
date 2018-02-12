@@ -1,3 +1,15 @@
 // Place all the styles related to the StaticPages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.article-container{
+  display: grid;
+  grid-template-columns: [left] 70px [row1] 1fr [row2] 1fr [row3] 1fr [row4] 1fr [row5] 1fr [row6] 1fr [row7] 1fr [row8] 1fr [right] 70px;
+
+}
+
+img{
+  width: 100vw;
+  height: 800px;
+  object-fit: cover;
+}

@@ -50,12 +50,11 @@ class Article extends Component {
 
   render() {
     return (
-      <div className="app">
-        <header className="app-header">
-          <h1 className="app-title">{this.state.title}</h1>
-          <div className="app-designer"> Built & Designed by <a href="https://www.chrishakos.com">Chris Hakos</a></div>
-          <Input value={this.state.title} className="title" slug={this.state.slug} update={this.update.bind(this)}/>
-        </header>
+      <div className="article-container">
+        <div className="article-header">
+          <img className="header-image" src={window.images.headerImg}/>
+        </div>
+        <Input value={this.state.title} className="title" slug={this.state.slug} update={this.update.bind(this)}/>
       </div>
     );
   }

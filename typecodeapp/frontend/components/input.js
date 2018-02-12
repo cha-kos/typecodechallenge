@@ -1,6 +1,7 @@
 import React from 'react';
 import SaveIcon from '../icons/saveIcon';
 import EditIcon from '../icons/editIcon';
+import Xicon from '../icons/Xicon';
 import {getArticle, updateArticle, verifySlug} from '../util/articleApiUtil';
 // import '../../styles/input.css';
 
@@ -10,6 +11,7 @@ export default class Input extends React.Component {
     this.state = {
       value: this.props.value,
       slug: this.props.slug,
+      parentValue: this.props.value,
       parentSlug: this.props.slug,
       className: this.props.className,
       editing: false
@@ -21,16 +23,12 @@ export default class Input extends React.Component {
       {
         value: nextProps.value,
         slug: nextProps.slug,
+        parentValue: nextProps.value,
         parentSlug: nextProps.slug
       }
     );
   }
 
-  onChange(e){
-    return e => {
-      this.setSlug(e.target.value);
-    };
-  }
 
   setSlug(title){
     if (title.length >= 1) {
@@ -51,6 +49,17 @@ export default class Input extends React.Component {
             .replace(/[;/?:@&=+$,.!""'']/g, "")
             .replace(/\s/g, "-")
     );
+  }
+
+  discard(){
+    this.setState({value: this.state.parentValue, slug: this.state.parentSlug, editing: false});
+
+  }
+
+  onChange(e){
+    return e => {
+      this.setSlug(e.target.value);
+    };
   }
 
   handleKeyPress(e){
@@ -80,6 +89,9 @@ export default class Input extends React.Component {
           <div> slug: {this.state.slug} </div>
           <button onClick={() => this.setState({editing: false}, this.props.update(this.state.value, this.state.slug))}>
             <SaveIcon/>
+          </button>
+          <button onClick={() => this.discard()}>
+            <Xicon/>
           </button>
         </div>
       );
