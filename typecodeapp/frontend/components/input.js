@@ -1,6 +1,6 @@
 import React from 'react';
 import Checkmark from '../icons/checkmark';
-import EditIcon from '../icons/editIcon';
+import Pencil from '../icons/pencil';
 import Xicon from '../icons/Xicon';
 import {getArticle, updateArticle, verifySlug} from '../util/articleApiUtil';
 // import '../../styles/input.css';
@@ -77,29 +77,33 @@ export default class Input extends React.Component {
     if (this.state.editing === true){
       return (
         <div className={`${this.state.className}-body input-body`}>
-          <div className='checkmark' onClick={() => this.setState({editing: false}, this.props.update(this.state.value, this.state.slug))}>
-            <SaveIcon/>
+          <div className='editing-icons-wrap'>
+            <div className='x-icon' onClick={() => this.discard()}>
+              <Xicon/>
+            </div>
+            <div className='checkmark' onClick={() => this.setState({editing: false}, this.props.update(this.state.value, this.state.slug))}>
+              <Checkmark/>
+            </div>
           </div>
-          <div className='x-icon' onClick={() => this.discard()}>
-            <Xicon/>
+          <div className="input-wrapper">
+            <input
+              className='title-input'
+              placeholder=''
+              type="text"
+              value={this.state.value}
+              onChange={this.onChange()}
+              onKeyPress={(e) => this.handleKeyPress(e)}
+              ref={(input) => { this.nameInput = input; }}
+            />
+            <div> slug: {this.state.slug} </div>
           </div>
-          <input
-            className={this.state.className}
-            placeholder=''
-            type="text"
-            value={this.state.value}
-            onChange={this.onChange()}
-            onKeyPress={(e) => this.handleKeyPress(e)}
-            ref={(input) => { this.nameInput = input; }}
-          />
-          <div> slug: {this.state.slug} </div>
         </div>
       );
     } else {
       return (
         <div className={`${this.state.className}-body input-body`}>
           <div className="edit-button" onClick={() => this.setState({editing: true}, () => this.autoFocus())}>
-            <EditIcon/>
+            <Pencil/>
           </div>
           <span className="title-wrap">
             <div
