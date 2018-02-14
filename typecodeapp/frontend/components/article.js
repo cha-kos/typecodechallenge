@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import Input from './input';
+import Title from './title';
+import TitleMask from './titleMask';
 import {getArticle, updateArticle, verifySlug} from '../util/articleApiUtil';
 
 
@@ -8,7 +9,12 @@ class Article extends Component {
     super(props);
     this.state = {
       title: "",
-      slug: ""
+      author: "",
+      location: "",
+      slug: "",
+      body: "",
+      tags: [],
+      titleEditing: false
     };
     this.retrieveArticle = this.retrieveArticle.bind(this);
   }
@@ -39,20 +45,45 @@ class Article extends Component {
   }
 
   update(title, slug){
-    var article = this;
     updateArticle({ title: title, newSlug: slug, oldSlug: this.state.slug})
     .then (response => {
-      article.setState(response , () => {
-        article.props.history.push(`/article/${article.state.slug}`);
+      this.setState(response , () => {
+        this.props.history.push(`/article/${this.state.slug}`);
       });
     });
   }
 
+  toggleTitleEdit(status){
+    this.setState({titleEditing: status});
+  }
+
   render() {
+    debugger
     return (
       <div className="article-container">
           <img className="header-image" src={window.images.headerImg}/>
-        <Input value={this.state.title} className="title" slug={this.state.slug} update={this.update.bind(this)}/>
+        <Title value={this.state.title}
+                className="title"
+                slug={this.state.slug}
+                update={this.update.bind(this)}
+                toggleTitleEdit={this.toggleTitleEdit.bind(this)}/>
+        <TitleMask value={this.state.title} editing={this.state.titleEditing}/>
+        <div className="author-date-tags-container">
+          <div className="author">
+            by Joey Salami
+          </div>
+          <div className="date">
+            August 6, 2015
+          </div>
+          <ul className="tags">
+            {this.state.tags.map((tag) => {
+              return <li>{"#" + tag}</li>;
+            })}
+          </ul>
+        </div>
+        <div className="article-body">
+          {this.state.body}
+        </div>
       </div>
     );
   }

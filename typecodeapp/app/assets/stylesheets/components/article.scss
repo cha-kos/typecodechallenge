@@ -1,10 +1,34 @@
 .article-container{
   display: grid;
-  grid-template-columns: [left] 70px [row1] 1fr [row2] 1fr [row3] 1fr [row4] 1fr [row5] 1fr [row6] 1fr [row7] 1fr [row8] 1fr [right] 70px
+  grid-template-columns: [left] 70px [col1] 1fr [col2] 1fr [col3] 1fr [col4] 1fr [col5] 1fr [col6] 1fr [col7] 1fr [col8] 1fr [right] 70px;
+  grid-template-rows: [row1] 70px [row2] 730px [row3] 100px [row4] 1fr;
 }
 
 img{
   width: 100vw;
-  height: 800px;
+  height: 770px;
   object-fit: cover;
+}
+
+.author-date-tags-container{
+  grid-column: col2 / col3;
+  grid-row-start: row4;
+  width: 180px;
+}
+
+.author{
+  border-top: 1px solid lightgray;
+  padding-top: 10px;
+  margin-bottom: 35px;
+}
+
+.date{
+  border-top: 1px solid lightgray;
+  padding-top: 10px;
+  margin-bottom: 30px;
+}
+
+.tags{
+  border-top: 1px solid lightgray;
+  padding-top: 10px;
 }
