@@ -3,13 +3,14 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
-// .article-container{
-//   display: grid;
-//   grid-template-columns: [left] 70px [row1] 1fr [row2] 1fr [row3] 1fr [row4] 1fr [row5] 1fr [row6] 1fr [row7] 1fr [row8] 1fr [right] 70px
-// }
-//
-// img{
-//   width: 100vw;
-//   height: 800px;
-//   object-fit: cover;
-// }
+@font-face {
+  font-family: 'Copernicus';
+  src: font-url('Copernicus-Heavy.eot'); /* IE9 Compat Modes */
+  src: font-url('Copernicus-Heavy.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       font-url('Copernicus-Heavy.woff') format('woff'), /* Modern Browsers */
+       font-url('Copernicus-Heavy.ttf')  format('truetype'), /* Safari, Android, iOS */
+       font-url('Copernicus-Heavy.svg#53d86533bbd20bc075f6ce29028572cc') format('svg'); /* Legacy iOS */
+
+  font-style:   normal;
+  font-weight:  400;
+}

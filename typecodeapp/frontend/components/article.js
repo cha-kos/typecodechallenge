@@ -58,7 +58,11 @@ class Article extends Component {
   }
 
   render() {
+    const body = this.state.body.split("\n");
     debugger
+    if(this.state.slug === "") {
+      throw new Error();
+    }
     return (
       <div className="article-container">
           <img className="header-image" src={window.images.headerImg}/>
@@ -69,20 +73,41 @@ class Article extends Component {
                 toggleTitleEdit={this.toggleTitleEdit.bind(this)}/>
         <TitleMask value={this.state.title} editing={this.state.titleEditing}/>
         <div className="author-date-tags-container">
-          <div className="author">
-            by Joey Salami
+          <div className="author futura">
+            by <span>{this.state.author}</span>
           </div>
-          <div className="date">
+          <div className="date futura">
             August 6, 2015
           </div>
-          <ul className="tags">
+          <ul className="tags futura">
             {this.state.tags.map((tag) => {
               return <li>{"#" + tag}</li>;
             })}
           </ul>
         </div>
         <div className="article-body">
-          {this.state.body}
+          {this.state.body.split("\n").map((paragraph, index) => {
+            if (index === 0){
+                let inline = {display: 'inline'};
+              return (
+                <p className="paragraph">
+                  <span className="location futura" style={inline}>{this.state.location}</span>
+                  {paragraph}
+                </p>
+              );
+            } else if (index == 2){
+              return (
+                <div>
+                  <div className="quote">
+                    {this.state.quote}
+                  </div>
+                  <p className="paragraph">{paragraph}</p>
+                </div>
+              );
+            }else {
+              return <p className="paragraph">{paragraph}</p>;
+            }
+          })}
         </div>
       </div>
     );
