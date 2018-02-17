@@ -3,16 +3,16 @@ import { HashRouter, Route, Switch, withRouter} from 'react-router-dom';
 import Article from './components/article';
 import Title from './components/title';
 import Root from './root';
-import ErrorBoundary from './components/errorboundary';
+import ErrorBoundary from './errorComponents/errorboundary';
+import RouteNotFound from './errorComponents/routeNotFound';
 
 class App extends Component {
   render() {
     return (
       <Switch>
-        <ErrorBoundary>
           <Route exact path='/' component={ Title } />
-          <Route path='/article/:slug' component={ Article } />
-        </ErrorBoundary>
+          <Route exact path='/article/:slug' component={ Article } />
+          <Route path="*" component={ RouteNotFound }/>
       </Switch>
     );
   }

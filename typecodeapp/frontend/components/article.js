@@ -14,7 +14,8 @@ class Article extends Component {
       slug: "",
       body: "",
       tags: [],
-      titleEditing: false
+      titleEditing: false,
+      error: null
     };
     this.retrieveArticle = this.retrieveArticle.bind(this);
   }
@@ -40,7 +41,10 @@ class Article extends Component {
   retrieveArticle(slug){
     getArticle(slug)
     .then( response => {
-      this.setState( response );
+        this.setState( response );
+    }, error => {
+      console.log(error);
+        this.setState({error: error.responseText});
     });
   }
 
@@ -59,8 +63,7 @@ class Article extends Component {
 
   render() {
     const body = this.state.body.split("\n");
-    debugger
-    if(this.state.slug === "") {
+    if(this.state.error) {
       throw new Error();
     }
     return (
@@ -80,8 +83,8 @@ class Article extends Component {
             August 6, 2015
           </div>
           <ul className="tags futura">
-            {this.state.tags.map((tag) => {
-              return <li>{"#" + tag}</li>;
+            {this.state.tags.map((tag, i) => {
+              return <li key={`${i}`}>{"#" + tag}</li>;
             })}
           </ul>
         </div>
@@ -90,14 +93,14 @@ class Article extends Component {
             if (index === 0){
                 let inline = {display: 'inline'};
               return (
-                <p className="paragraph">
+                <p key={`${index}`} className="paragraph">
                   <span className="location futura" style={inline}>{this.state.location}</span>
                   {paragraph}
                 </p>
               );
             } else if (index == 2){
               return (
-                <div>
+                <div key={`${index}`}>
                   <div className="quote">
                     {this.state.quote}
                   </div>
@@ -105,7 +108,7 @@ class Article extends Component {
                 </div>
               );
             }else {
-              return <p className="paragraph">{paragraph}</p>;
+              return <p key={`${index}`} className="paragraph">{paragraph}</p>;
             }
           })}
         </div>

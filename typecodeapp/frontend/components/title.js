@@ -3,7 +3,6 @@ import Checkmark from '../icons/checkmark';
 import Pencil from '../icons/pencil';
 import Xicon from '../icons/Xicon';
 import {getArticle, updateArticle, verifySlug} from '../util/articleApiUtil';
-// import '../../styles/input.css';
 
 export default class Title extends React.Component {
   constructor(props){
@@ -52,18 +51,39 @@ export default class Title extends React.Component {
   }
 
   discard(){
-    this.setState({value: this.state.parentValue, slug: this.state.parentSlug, editing: false},
+    this.setState(
+      {value: this.state.parentValue,
+        slug: this.state.parentSlug,
+        checkmarkColor: "#A2D05A",
+        editing: false},
       () => this.props.toggleTitleEdit(this.state.editing));
   }
 
   onChange(e){
     return e => {
+      if(e.target.value.length < 1){
+        this.setState({checkmarkColor: "#4D4D4D"});
+      } else if (this.state.checkmarkColor === "#4D4D4D" && e.target.value.length >= 1){
+        this.setState({checkmarkColor: "#A2D05A"});
+      }
       this.setSlug(e.target.value);
     };
   }
 
+  handleCheckmarkClick(){
+      if (this.state.checkmarkColor === "#4D4D4D"){
+        return;
+      }
+      this.setState({editing: false},
+        () => {
+          this.props.update(this.state.value, this.state.slug);
+          this.props.toggleTitleEdit(this.state.editing);
+        }
+      );
+  }
+
   handleKeyPress(e){
-    if (e && e.key === "Enter"){
+    if (e && e.key === "Enter" && e.target.value.length >= 1){
       this.setState({editing: false}, () => {
         this.props.update(this.state.value, this.state.slug);
         this.props.toggleTitleEdit(this.state.editing);
@@ -79,26 +99,25 @@ export default class Title extends React.Component {
   render(){
     if (this.state.editing === true){
       return (
-        <div className={`${this.state.className}-body input-body`}>
-          <div className='editing-icons-wrap' onClick={() => this.discard()}>
+        <div className={`title-body input-body`}>
+          <div className='editing-icons-wrap'>
             <button className='x-icon' onClick={() => this.discard()}>
               <Xicon/>
             </button>
-            <button className='checkmark' onClick={() => this.setState({editing: false},
-                () => {
-                  this.props.update(this.state.value, this.state.slug);
-                  this.props.toggleTitleEdit(this.state.editing);
-                })}>
-              <Checkmark color={this.state.checkMarkColor}/>
+            <button className='checkmark'
+                    style= {{background: this.state.checkmarkColor}}
+                    onClick={this.handleCheckmarkClick.bind(this)}>
+              <Checkmark/>
             </button>
           </div>
           <div className="input-wrapper">
+
             <input
               className='title-input'
               placeholder=''
               type="text"
               value={this.state.value}
-              onChange={this.onChange()}
+              onChange={this.onChange().bind(this)}
               onKeyPress={(e) => this.handleKeyPress(e)}
               ref={(input) => { this.nameInput = input; }}
             />
@@ -117,7 +136,6 @@ export default class Title extends React.Component {
             <div
               className={`${this.state.className} input-display`}
               value={this.state.value}
-              onChange={this.onChange()}
               onClick={() => this.setState({editing: true}, () =>{
                   this.autoFocus();
                   this.props.toggleTitleEdit(this.state.editing);})}

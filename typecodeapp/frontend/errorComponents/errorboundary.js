@@ -7,7 +7,6 @@ class ErrorBoundary extends React.Component {
   }
 
   componentDidCatch(error, info) {
-    debugger
     // Display fallback UI
     this.setState({ hasError: true });
     // You can also log the error to an error reporting service
@@ -17,7 +16,7 @@ class ErrorBoundary extends React.Component {
   render() {
     if (this.state.hasError) {
       // You can render any custom fallback UI
-      return (<h1>ERROR: Invalid URL</h1>);
+      return (<h1>ERROR: Article Does Not Exist</h1>);
     }
     return this.props.children;
   }

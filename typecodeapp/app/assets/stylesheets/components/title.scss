@@ -28,8 +28,8 @@
   font-weight: bold;
   background: image-url("header_img.jpg");
   background-position-y: bottom;
-  background-position-x: -193px;
-  background-size: 1230px;
+  background-position-x: -255px;
+  background-size: 1325px;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   z-index: 50;
@@ -73,6 +73,23 @@
   outline: none;
   font-size: 35px;
   padding-left: 10px;
+  z-index: 2;
+}
+
+.title-input:focus{
+  .input-click-mask{
+    display: none;
+  }
+}
+
+.input-click-mask{
+  position: absolute;
+  height: 75px;
+  width: 685px;
+  margin-top: -8px;
+  height: 80px;
+  width: 700px;
+  cursor: pointer;
 }
 
 .editing-icons-wrap{
@@ -81,7 +98,6 @@
 }
 
 .checkmark{
-  background-color: #A2D05A;
   height: 30px;
   width: 30px;
   padding-top: 1px;
@@ -92,4 +108,45 @@
   height: 30px;
   width: 30px;
   padding-top: 1px;
+}
+
+// adjust font background based on viewport to be fluent with picture
+@media(min-width: 800px){
+  .input-display{
+    background-position-y: bottom;
+    background-position-x: -255px;
+    background-size: 1325px;
+  }
+}
+
+@media(min-width: 1280px){
+  .input-display{
+    background-position-y: bottom;
+    background-position-x: -193px;
+    background-size: 1230px;
+  }
+}
+
+@media(min-width: 1400px){
+  .input-display{
+    background-position-y: 258px;
+    background-position-x: -274px;
+    background-size: 1550px;
+  }
+}
+
+@media(min-width: 1500px){
+  .input-display{
+    background-position-y: 273px;
+    background-position-x: -253px;
+    background-size: 1550px;
+  }
+}
+
+@media(min-width: 1650px){
+  .input-display{
+    background-position-y: 339px;
+    background-position-x: -278px;
+    background-size: 1736px;
+  }
 }
