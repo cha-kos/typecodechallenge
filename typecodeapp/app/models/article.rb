@@ -31,21 +31,4 @@ class Article < ActiveRecord::Base
     random_string = ('a'..'z').to_a.shuffle[0,5].join
     return slug + "-" + random_string
   end
-
- # private
- #  def create_slug
- #    slug = convert_title_to_slug
- #    if validate_slug(slug)
- #      while validate_slug(slug)
- #        slug = append_to_slug(slug)
- #      end
- #    end
- #    self.slug = slug
- #  end
- #
- #  def convert_title_to_slug
- #    self.title.downcase.gsub(" ", "-")
- #  end
-
-
 end

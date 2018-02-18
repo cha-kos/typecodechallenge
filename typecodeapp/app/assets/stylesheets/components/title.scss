@@ -21,7 +21,7 @@
   background-color: transparent;
 }
 
-.input-display{
+.title-display{
   font-family: 'Copernicus';
   line-height: normal;
   font-size: 55px;
@@ -112,7 +112,7 @@
 
 // adjust font background based on viewport to be fluent with picture
 @media(min-width: 800px){
-  .input-display{
+  .title-display{
     background-position-y: bottom;
     background-position-x: -255px;
     background-size: 1325px;
@@ -120,7 +120,7 @@
 }
 
 @media(min-width: 1280px){
-  .input-display{
+  .title-display{
     background-position-y: bottom;
     background-position-x: -193px;
     background-size: 1230px;
@@ -128,24 +128,24 @@
 }
 
 @media(min-width: 1400px){
-  .input-display{
-    background-position-y: 258px;
+  .title-display{
+    background-position-y: bottom;
     background-position-x: -274px;
     background-size: 1550px;
   }
 }
 
 @media(min-width: 1500px){
-  .input-display{
-    background-position-y: 273px;
+  .title-display{
+    background-position-y: bottom;
     background-position-x: -253px;
     background-size: 1550px;
   }
 }
 
-@media(min-width: 1650px){
-  .input-display{
-    background-position-y: 339px;
+@media(min-width: 1600px){
+  .title-display{
+    background-position-y: bottom;
     background-position-x: -278px;
     background-size: 1736px;
   }

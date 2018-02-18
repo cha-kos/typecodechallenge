@@ -106,12 +106,12 @@ export default class Title extends React.Component {
             </button>
             <button className='checkmark'
                     style= {{background: this.state.checkmarkColor}}
-                    onClick={this.handleCheckmarkClick.bind(this)}>
+                    onClick={this.handleCheckmarkClick.bind(this)}
+            >
               <Checkmark/>
             </button>
           </div>
           <div className="input-wrapper">
-
             <input
               className='title-input'
               placeholder=''
@@ -134,7 +134,7 @@ export default class Title extends React.Component {
             <Pencil/>
           </button>
             <div
-              className={`${this.state.className} input-display`}
+              className='title-display'
               value={this.state.value}
               onClick={() => this.setState({editing: true}, () =>{
                   this.autoFocus();
