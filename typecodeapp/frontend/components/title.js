@@ -83,11 +83,14 @@ export default class Title extends React.Component {
   }
 
   handleKeyPress(e){
-    if (e && e.key === "Enter" && e.target.value.length >= 1){
+    // debugger
+    if (e.key === "Enter" && e.target.value.length >= 1){
       this.setState({editing: false}, () => {
         this.props.update(this.state.value, this.state.slug);
         this.props.toggleTitleEdit(this.state.editing);
       });
+    } else if (e.key === "Escape"){
+      this.discard();
     }
   }
 
@@ -118,10 +121,14 @@ export default class Title extends React.Component {
               type="text"
               value={this.state.value}
               onChange={this.onChange().bind(this)}
-              onKeyPress={(e) => this.handleKeyPress(e)}
+              onKeyDown={(e) => this.handleKeyPress(e)}
               ref={(input) => { this.nameInput = input; }}
             />
-            <div> slug: {this.state.slug} </div>
+            {(() => {if(this.state.value.length > 0){
+              return(  <div className="slug-container futura"> slug: <span className="slug">{this.state.slug}</span> </div>);
+            }else{
+              return(<div className="slug-container futura"> slug: <span style={{fontStyle: "italic"}}>please enter a post title</span> </div>);
+            }})()}
           </div>
         </div>
       );

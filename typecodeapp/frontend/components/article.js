@@ -15,6 +15,7 @@ class Article extends Component {
       body: "",
       tags: [],
       titleEditing: false,
+      date:"",
       error: null
     };
     this.retrieveArticle = this.retrieveArticle.bind(this);
@@ -80,27 +81,26 @@ class Article extends Component {
             by <span>{this.state.author}</span>
           </div>
           <div className="date futura">
-            August 6, 2015
+            {this.state.date}
           </div>
           <ul className="tags futura">
             {this.state.tags.map((tag, i) => {
-              return <li key={`${i}`}>{"#" + tag}</li>;
+              return <li key={i}>{"#" + tag}</li>;
             })}
           </ul>
         </div>
         <div className="article-body">
           {this.state.body.split("\n").map((paragraph, index) => {
             if (index === 0){
-                let inline = {display: 'inline'};
               return (
-                <p key={`${index}`} className="paragraph">
-                  <span className="location futura" style={inline}>{this.state.location}</span>
+                <p key={index} className="paragraph">
+                  <span className="location futura" style={{display: 'inline'}}>{this.state.location}</span>
                   {paragraph}
                 </p>
               );
             } else if (index == 2){
               return (
-                <div key={`${index}`}>
+                <div key={index}>
                   <div className="quote">
                     {this.state.quote}
                   </div>
@@ -108,7 +108,7 @@ class Article extends Component {
                 </div>
               );
             }else {
-              return <p key={`${index}`} className="paragraph">{paragraph}</p>;
+              return <p key={index} className="paragraph">{paragraph}</p>;
             }
           })}
         </div>

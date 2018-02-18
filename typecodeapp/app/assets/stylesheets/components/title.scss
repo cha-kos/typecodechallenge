@@ -61,35 +61,34 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 130px;
+  height: 150px;
   background: white;
-  width: 725px;
+  width: 750px;
   margin-left: 30px;
 }
 
 .title-input{
+  font-family: 'Copernicus';
   height: 75px;
   width: 685px;
   outline: none;
-  font-size: 35px;
+  font-size: 40px;
   padding-left: 10px;
   z-index: 2;
+  background: #F9F9F9;
+  border: 2px solid #CBCBCB;
 }
 
-.title-input:focus{
-  .input-click-mask{
-    display: none;
-  }
-}
-
-.input-click-mask{
-  position: absolute;
-  height: 75px;
+.slug-container{
   width: 685px;
-  margin-top: -8px;
-  height: 80px;
-  width: 700px;
-  cursor: pointer;
+  text-align: left;
+  margin-top: 10px;
+  text-transform: lowercase;
+  font-size: 14px;
+}
+
+.slug{
+  color: #666666;
 }
 
 .editing-icons-wrap{

@@ -2,12 +2,14 @@ class Article < ActiveRecord::Base
   validates :title, :slug, presence: true
   validates :slug, uniqueness: true
 
+  # override to_param under the hood to set url param to custom slug
   def to_param
     self.slug
   end
 
+  # class method to verify frontend generated slug
   def self.verify_slug(slug)
-    if is_valid?(slug)
+    if !is_valid?(slug)
       while !is_valid?(slug)
         slug = append_to_slug(slug)
       end
