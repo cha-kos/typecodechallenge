@@ -6,24 +6,20 @@ class Article < ActiveRecord::Base
     self.slug
   end
 
-  def generate_slug
-    create_slug
-  end
-
   def self.verify_slug(slug)
-    if validate_slug(slug)
-      while validate_slug(slug)
+    if is_valid?(slug)
+      while !is_valid?(slug)
         slug = append_to_slug(slug)
       end
     end
     return slug
   end
 
-  def self.validate_slug(slug)
+  def self.is_valid?(slug)
     if Article.exists?(slug: slug)
-      return true
-    else
       return false
+    else
+      return true
     end
   end
 
