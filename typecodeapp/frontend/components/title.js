@@ -29,6 +29,15 @@ export default class Title extends React.Component {
     );
   }
 
+  setTitle(){
+    this.setState({editing: false},
+      () => {
+        this.props.update(this.state.value, this.state.slug);
+        this.props.toggleTitleEdit(this.state.editing);
+      }
+    );
+  }
+
   setSlug(title){
     if (title.length >= 1) {
       var slug = this.slugify(title);
@@ -43,6 +52,7 @@ export default class Title extends React.Component {
   }
 
   slugify(title){
+    // convert title into valid slug, making lowercase, omitting special characters, and replacing white space with -
     return(
       title.toLowerCase()
             .replace(/[;/?:@&=+$,.!""'']/g, "")
@@ -51,6 +61,7 @@ export default class Title extends React.Component {
   }
 
   discard(){
+    // use previously saved state to set back to original title and slug
     this.setState(
       {value: this.state.parentValue,
         slug: this.state.parentSlug,
@@ -60,6 +71,7 @@ export default class Title extends React.Component {
   }
 
   onChange(e){
+    // update state of title, change color of checkmark box if title length is insufficient
     return e => {
       if(e.target.value.length < 1){
         this.setState({checkmarkColor: "#4D4D4D"});
@@ -70,31 +82,26 @@ export default class Title extends React.Component {
     };
   }
 
+
   handleCheckmarkClick(){
-      if (this.state.checkmarkColor === "#4D4D4D"){
+    // update the title if valid
+      if (this.state.value.length < 1){
         return;
       }
-      this.setState({editing: false},
-        () => {
-          this.props.update(this.state.value, this.state.slug);
-          this.props.toggleTitleEdit(this.state.editing);
-        }
-      );
+      this.setTitle();
   }
 
   handleKeyPress(e){
-    // debugger
+    // update the title if valid and Enter is pressed, discard changes if Esc is pressed
     if (e.key === "Enter" && e.target.value.length >= 1){
-      this.setState({editing: false}, () => {
-        this.props.update(this.state.value, this.state.slug);
-        this.props.toggleTitleEdit(this.state.editing);
-      });
+      this.setTitle();
     } else if (e.key === "Escape"){
       this.discard();
     }
   }
 
   autoFocus(){
+    // autofocus on input when clicking to edit in place
     this.nameInput.selectionStart = this.nameInput.selectionEnd = this.nameInput.value.length;
     this.nameInput.focus();
   }

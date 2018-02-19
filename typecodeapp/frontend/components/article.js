@@ -26,12 +26,14 @@ class Article extends Component {
   }
 
   componentWillReceiveProps(nextProps){
-    if (this.props.match.params.slug !== nextProps.match.params.slug){
-      this.retrieveArticle(nextProps.match.params.slug);
-    }
+    // if (this.props.match.params.slug !== nextProps.match.params.slug){
+    //   this.retrieveArticle(nextProps.match.params.slug);
+    // }
+    this.retrieveArticle(nextProps.match.params.slug);
   }
 
   shouldComponentUpdate(nextProps){
+    // trigger update if url slug is changed
     if (this.props.match.params.slug !== nextProps.match.params.slug){
       return false;
     } else {
@@ -59,11 +61,11 @@ class Article extends Component {
   }
 
   toggleTitleEdit(status){
+    // send editing state to titleMask component to hide visibility while editing title
     this.setState({titleEditing: status});
   }
 
   render() {
-    const body = this.state.body.split("\n");
     if(this.state.error) {
       throw new Error();
     }
@@ -91,6 +93,8 @@ class Article extends Component {
         </div>
         <div className="article-body">
           {this.state.body.split("\n").map((paragraph, index) => {
+            // split article body into paragraphs and iterate through
+            // adding location and quote based on index of paragraph
             if (index === 0){
               return (
                 <p key={index} className="paragraph">

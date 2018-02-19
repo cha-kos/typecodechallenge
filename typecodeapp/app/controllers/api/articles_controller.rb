@@ -11,6 +11,7 @@ class Api::ArticlesController < ApplicationController
 
   def update
     @article = Article.find_by slug: params[:slug]
+    # if the article title is the same, render show method
     if @article.title == params[:title]
       render :show
       return

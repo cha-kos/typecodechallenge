@@ -1,5 +1,4 @@
 
-
 export const updateArticle = ( article ) => {
   return $.ajax({
     method: "PATCH",
