@@ -11,6 +11,7 @@ export default class TitleMask extends React.Component {
   }
 
   componentWillReceiveProps(nextProps){
+    // change state.title or hide titleMask component completely if editing
     if (this.props.value !== nextProps.value) {
       this.setState({title: nextProps.value, editing: nextProps.editing});
     } else if (this.props.editing !== nextProps.editing) {

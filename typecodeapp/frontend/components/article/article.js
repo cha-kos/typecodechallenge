@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import Title from './title';
-import TitleMask from './titleMask';
-import {getArticle, updateArticle, verifySlug} from '../util/articleApiUtil';
-import Loading from 'react-loading-components';
+import Title from '../title/title';
+import TitleMask from '../title/titleMask';
+import {getArticle, updateArticle, verifySlug} from '../../util/articleApiUtil';
 
 
 class Article extends Component {

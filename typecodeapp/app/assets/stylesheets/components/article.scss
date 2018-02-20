@@ -44,12 +44,12 @@ img{
 }
 
 .date{
-  border-top: 1px solid lightgray;
+  border-top: 1px solid #E5E5E5;
   margin-bottom: 30px;
 }
 
 .tags{
-  border-top: 1px solid lightgray;
+  border-top: 1px solid #E5E5E5;
   padding-top: 10px;
 }
 
@@ -94,6 +94,57 @@ img{
   align-items: center;
 }
 
+
+// re interperet grid system for smaller viewports
+@media(max-width: 1100px){
+  .author-date-tags-container{
+    grid-column: col2 / col7;
+    grid-row-start: row4;
+    display: flex;
+    height: 100px;
+    margin-left: 20px;
+    margin-top: -30px;
+  }
+
+  .author-date-tags-container div{
+    padding: 20px;
+  }
+
+  .author{
+    border-top: 0px;
+    border-right: 1px solid #E5E5E5;
+    height: 40px;
+    display: flex;
+  }
+
+  .author span{
+    padding-left: 5px;
+  }
+  .date{
+    border-top: 0px;
+    border-right: 1px solid #E5E5E5;
+    height: 40px;
+  }
+
+  .tags{
+    border-top: 0px;
+    padding-top: 10px;
+    padding-left: 20px;
+  }
+
+  .article-body{
+    grid-column: col2 / col8;
+    grid-row-start: row4;
+    margin-top: 100px;
+    margin-left: 20px;
+  }
+
+  .paragraph{
+    margin-right: 0px;
+  }
+}
+
+// loading spinner to display while component is mounting
 .spinner {
   width: 150px;
   height: 150px;

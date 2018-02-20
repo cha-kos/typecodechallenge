@@ -1,8 +1,8 @@
 import React from 'react';
-import Checkmark from '../icons/checkmark';
-import Pencil from '../icons/pencil';
-import Xicon from '../icons/Xicon';
-import {getArticle, updateArticle, verifySlug} from '../util/articleApiUtil';
+import Checkmark from '../../icons/checkmark';
+import Pencil from '../../icons/pencil';
+import Xicon from '../../icons/Xicon';
+import {getArticle, updateArticle, verifySlug} from '../../util/articleApiUtil';
 
 export default class Title extends React.Component {
   constructor(props){
