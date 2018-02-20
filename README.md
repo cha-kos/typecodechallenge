@@ -1,12 +1,12 @@
 # Type/Code Development Exercise
 
-I solved this assessment using a Rails Backend, PostgreSQL database, and React.js frontend.
+I solved this assessment using a Rails Backend(JSON API), PostgreSQL database, and React.js frontend.
 
 To run the application locally, please follow the steps below.
 
 ### Installations
 
-To run this installation you need to following tools installed on your computer.
+In order to run this application locally, you need to following tools installed on your computer.
 
 #### Ruby On Rails
  [Installation Instructions](http://railsapps.github.io/installrubyonrails-mac.html)
@@ -22,23 +22,30 @@ To run this installation you need to following tools installed on your computer.
   Clone the repository and navigate to the repository folder via your command line.
   Once inside of the repository folder, navigate into the `typecodeapp` folder.
 
-  From the `typecode app` folder, first install the ruby dependencies by running the command:
+  From the `typecode app` folder, first install the ruby dependencies by running the commands:
+
+    `gem install bundler`
     `bundle install`
 
   Once you have successfully installed the gems, install FrontEnd dependencies by running the command:
+
     `npm install`
 
   Setup your database by running the command:
+
     `bundle exec rake db:setup`
+
   This command will automatically seed the database with the five records asked for in the assessment prompt.
 
 ### Running Locally
 
-  To run this application locally, start your local Rails server by running the command
+  To run this application locally, start your local Rails server by running the command:
+  
     `rails s`
 
-  Navigate to http://localhost:3000/ via your browser. Since there was no page to page navigation required
-  for this challenge, I suggest starting at one of the URLs
+  Navigate to http://localhost:3000/ via your browser. Since page navigation was not required
+  for this assessment, I suggest starting at one of the URLs below. You can edit the title inline by clicking
+  the edit button or simply clicking the title.
 
   http://localhost:3000/#/article/i-dwell-in-possibility
 
@@ -47,5 +54,5 @@ To run this installation you need to following tools installed on your computer.
   http://localhost:3000/#/article/we-dont-get-offered-crises-they-arrive
 
   http://localhost:3000/#/article/it-is-impossible-to-walk-rapidly-and-be-unhappy
-  
+
   http://localhost:3000/#/article/knowledge-is-power

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Title from './title';
 import TitleMask from './titleMask';
 import {getArticle, updateArticle, verifySlug} from '../util/articleApiUtil';
+import Loading from 'react-loading-components';
 
 
 class Article extends Component {
@@ -16,6 +17,7 @@ class Article extends Component {
       tags: [],
       titleEditing: false,
       date:"",
+      loading: true,
       error: null
     };
     this.retrieveArticle = this.retrieveArticle.bind(this);
@@ -26,10 +28,10 @@ class Article extends Component {
   }
 
   componentWillReceiveProps(nextProps){
-    // if (this.props.match.params.slug !== nextProps.match.params.slug){
-    //   this.retrieveArticle(nextProps.match.params.slug);
-    // }
-    this.retrieveArticle(nextProps.match.params.slug);
+    // skip AJAX request if url slug has not changed
+    if (this.props.match.params.slug !== nextProps.match.params.slug){
+      this.retrieveArticle(nextProps.match.params.slug);
+    }
   }
 
   shouldComponentUpdate(nextProps){
@@ -68,6 +70,9 @@ class Article extends Component {
   render() {
     if(this.state.error) {
       throw new Error();
+    }
+    if (this.state.loading === true) {
+      return(<div className="spinner"></div>);
     }
     return (
       <div className="article-container">

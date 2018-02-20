@@ -1,5 +1,6 @@
 import React from 'react';
 
+// this component provides the white background behind the knockout title text
 export default class TitleMask extends React.Component {
   constructor(props){
     super(props);
