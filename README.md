@@ -4,20 +4,20 @@ I solved this assessment using a Rails Backend, PostgreSQL database, and React.j
 
 To run the application locally, please follow the steps below.
 
-###Installations
+### Installations
 
 To run this installation you need to following tools installed on your computer.
 
-####Ruby On Rails
+#### Ruby On Rails
  [Installation Instructions](http://railsapps.github.io/installrubyonrails-mac.html)
 
-####PostgreSQL
+#### PostgreSQL
  [Installation Instructions](https://gist.github.com/sgnl/609557ebacd3378f3b72).
 
-####NPM
+#### NPM
   [Installation Instructions](http://blog.teamtreehouse.com/install-node-js-npm-mac)
 
-###Configuring Locally
+### Configuring Locally
 
   Clone the repository and navigate to the repository folder via your command line.
   Once inside of the repository folder, navigate into the `typecodeapp` folder.
@@ -32,7 +32,7 @@ To run this installation you need to following tools installed on your computer.
     `bundle exec rake db:setup`
   This command will automatically seed the database with the five records asked for in the assessment prompt.
 
-###Running Locally
+### Running Locally
 
   To run this application locally, start your local Rails server by running the command
     `rails s`
