@@ -12,7 +12,7 @@ To run this installation you need to following tools installed on your computer.
  [Installation Instructions](http://railsapps.github.io/installrubyonrails-mac.html)
 
 #### PostgreSQL
- [Installation Instructions](https://gist.github.com/sgnl/609557ebacd3378f3b72).
+ [Installation Instructions](https://gist.github.com/sgnl/609557ebacd3378f3b72)
 
 #### NPM
   [Installation Instructions](http://blog.teamtreehouse.com/install-node-js-npm-mac)
@@ -41,7 +41,11 @@ To run this installation you need to following tools installed on your computer.
   for this challenge, I suggest starting at one of the URLs
 
   http://localhost:3000/#/article/i-dwell-in-possibility
-  http://localhost:3000/#/i-have-seen-the-future-and-it-doesnt-work
-  http://localhost:3000/#/we-dont-get-offered-crises-they-arrive
+
+  http://localhost:3000/#/article/i-have-seen-the-future-and-it-doesnt-work
+
+  http://localhost:3000/#/article/we-dont-get-offered-crises-they-arrive
+
   http://localhost:3000/#/article/it-is-impossible-to-walk-rapidly-and-be-unhappy
+  
   http://localhost:3000/#/article/knowledge-is-power
