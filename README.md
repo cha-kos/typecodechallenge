@@ -56,3 +56,10 @@ In order to run this application locally, you need to following tools installed 
   http://localhost:3000/#/article/it-is-impossible-to-walk-rapidly-and-be-unhappy
 
   http://localhost:3000/#/article/knowledge-is-power
+
+  If you would like to modify anything on the FrontEnd of the application, be sure to open another terminal tab in
+  addition do your rails server and run webpack with the command:
+
+  `webpack --watch`
+
+  This will instantly compile any changes made to the React frontend. 
