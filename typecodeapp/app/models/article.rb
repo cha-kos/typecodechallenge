@@ -17,6 +17,7 @@ class Article < ActiveRecord::Base
     return slug
   end
 
+  # checks if article exists by searching for given slug (from frontend)
   def self.is_valid?(slug)
     if Article.exists?(slug: slug)
       return false
@@ -25,6 +26,7 @@ class Article < ActiveRecord::Base
     end
   end
 
+  # appends five random characters to slug to avoid DB collisions
   def self.append_to_slug(slug)
     random_string = ('a'..'z').to_a.shuffle[0,5].join
     return slug + "-" + random_string
