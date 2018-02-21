@@ -14,7 +14,7 @@ In order to run this application locally, you need to following tools installed 
 #### PostgreSQL
  [Installation Instructions](https://gist.github.com/sgnl/609557ebacd3378f3b72)
 
-#### NPM
+#### NPM/Node
   [Installation Instructions](http://blog.teamtreehouse.com/install-node-js-npm-mac)
 
 ### Configuring Locally
@@ -22,7 +22,7 @@ In order to run this application locally, you need to following tools installed 
   Clone the repository and navigate to the repository folder via your command line.
   Once inside of the repository folder, navigate into the `typecodeapp` folder.
 
-  From the `typecode app` folder, first install the ruby dependencies by running the commands:
+  From the `typecodeapp` folder, first install the ruby dependencies by running the commands:
 
     `gem install bundler`
     `bundle install`
@@ -35,12 +35,12 @@ In order to run this application locally, you need to following tools installed 
 
     `bundle exec rake db:setup`
 
-  This command will automatically seed the database with the five records asked for in the assessment prompt.
+  This command will automatically seed the database with the five records asked for in the assessment prompt. The seed file can be found in `db/seeds.rb`.
 
 ### Running Locally
 
   To run this application locally, start your local Rails server by running the command:
-  
+
     `rails s`
 
   Navigate to http://localhost:3000/ via your browser. Since page navigation was not required
