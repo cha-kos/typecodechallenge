@@ -141,7 +141,7 @@ export default class Title extends React.Component {
       );
     } else {
       return (
-        <div className={`${this.state.className}-body input-body`}>
+        <div className='title-body'>
           <button className="edit-button" onClick={() => this.setState({editing: true}, () =>{
               this.autoFocus();
               this.props.toggleTitleEdit(this.state.editing);})}>

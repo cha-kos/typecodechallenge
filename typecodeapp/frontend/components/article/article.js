@@ -62,7 +62,7 @@ class Article extends Component {
   }
 
   toggleTitleEdit(status){
-    // send editing state to titleMask component to hide visibility while editing title
+    // send editing state to titleMask component to hide mask while editing title
     this.setState({titleEditing: status});
   }
 
@@ -81,7 +81,7 @@ class Article extends Component {
                 slug={this.state.slug}
                 update={this.update.bind(this)}
                 toggleTitleEdit={this.toggleTitleEdit.bind(this)}/>
-        <TitleMask value={this.state.title} editing={this.state.titleEditing}/>
+        <TitleMask title={this.state.title} editing={this.state.titleEditing}/>
         <div className="author-date-tags-container">
           <div className="author futura">
             by <span>{this.state.author}</span>

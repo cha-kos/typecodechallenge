@@ -130,6 +130,14 @@ img{
     border-top: 0px;
     padding-top: 10px;
     padding-left: 20px;
+    height: 60px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+
+  .tags li{
+    margin-right: 10px;
   }
 
   .article-body{
@@ -144,7 +152,7 @@ img{
   }
 }
 
-// loading spinner to display while component is mounting
+// loading spinner to display while component is fetching data
 .spinner {
   width: 150px;
   height: 150px;
