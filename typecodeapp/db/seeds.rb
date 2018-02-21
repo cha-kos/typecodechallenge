@@ -22,7 +22,7 @@ Nam vestibulum, arcu sodales feugiat consectetur, nisl orci bibendum elit, eu eu
 
 quote = "Looking at it now, last December. We were built to fall apart. Then fall back together."
 
-location = "NEW YORK, NY"
+location = "NEW YORK, NY."
 
 author = "Bob Loblaw"
 
