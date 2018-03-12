@@ -14,7 +14,7 @@ export default class Title extends React.Component {
       parentSlug: this.props.slug,
       className: this.props.className,
       editing: false,
-      checkmarkColor: "#A2D05A"
+      checkmarkClassName: "checkmark"
     };
   }
 
@@ -65,7 +65,7 @@ export default class Title extends React.Component {
     this.setState(
       {value: this.state.parentValue,
         slug: this.state.parentSlug,
-        checkmarkColor: "#A2D05A",
+        checkmarkClassName: "checkmark",
         editing: false},
       () => this.props.toggleTitleEdit(this.state.editing));
   }
@@ -74,9 +74,9 @@ export default class Title extends React.Component {
     // update state of title, change color of checkmark box if title length is insufficient
     return e => {
       if(e.target.value.length < 1){
-        this.setState({checkmarkColor: "#4D4D4D"});
-      } else if (this.state.checkmarkColor === "#4D4D4D" && e.target.value.length >= 1){
-        this.setState({checkmarkColor: "#A2D05A"});
+        this.setState({checkmarkClassName: "checkmark disabled"});
+      } else if (this.state.checkmarkClassName === "checkmark disabled" && e.target.value.length >= 1){
+        this.setState({checkmarkClassName: "checkmark"});
       }
       this.setSlug(e.target.value);
     };
@@ -114,10 +114,8 @@ export default class Title extends React.Component {
             <button className='x-icon' onClick={() => this.discard()}>
               <Xicon/>
             </button>
-            <button className='checkmark'
-                    style= {{background: this.state.checkmarkColor}}
-                    onClick={this.handleCheckmarkClick.bind(this)}
-            >
+            <button className={this.state.checkmarkClassName}
+                    onClick={this.handleCheckmarkClick.bind(this)}>
               <Checkmark/>
             </button>
           </div>
